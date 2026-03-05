@@ -6,16 +6,17 @@
 // キャッシュの名前（バージョンを変えると古いキャッシュが削除される）
 const CACHE_NAME = 'todo-app-v1';
 
-// キャッシュするファイルのリスト（アプリに必要なすべてのファイル）
+// キャッシュするファイルのリスト
+// GitHub Pages のサブパス /ai-todo/ に合わせた絶対パスで指定する
 const FILES_TO_CACHE = [
-  './',
-  './index.html',
-  './style.css',
-  './app.js',
-  './manifest.json',
-  './icons/icon-192.svg',
-  './icons/icon-512.svg',
-  './icons/icon-maskable.svg',
+  '/ai-todo/',
+  '/ai-todo/index.html',
+  '/ai-todo/style.css',
+  '/ai-todo/app.js',
+  '/ai-todo/manifest.json',
+  '/ai-todo/icons/icon-192.svg',
+  '/ai-todo/icons/icon-512.svg',
+  '/ai-todo/icons/icon-maskable.svg',
 ];
 
 // --------------------------------------------------
@@ -99,7 +100,7 @@ self.addEventListener('fetch', function(event) {
       }).catch(function() {
         // ネットワークもキャッシュもない場合（HTMLリクエストのフォールバック）
         if (event.request.destination === 'document') {
-          return caches.match('./index.html');
+          return caches.match('/ai-todo/index.html');
         }
       });
     })

@@ -61,7 +61,8 @@
     // Service WorkerはHTTPS または localhost でのみ動作します
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('./sw.js')
+        // scope オプションで /ai-todo/ 配下のみ管理対象にする
+        navigator.serviceWorker.register('/ai-todo/sw.js', { scope: '/ai-todo/' })
           .then(function(registration) {
             console.log('[SW] 登録成功:', registration.scope);
           })
