@@ -1,0 +1,256 @@
+/* ========================================
+   リセット・基本設定
+   ======================================== */
+
+/* すべての要素のマージン・パディングをリセット */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* 幅の計算にpaddingを含める */
+}
+
+/* ページ全体の背景と文字設定 */
+body {
+  background-color: #f0f4f8;
+  font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', sans-serif;
+  color: #333;
+  min-height: 100vh;
+  padding: 16px;
+}
+
+/* ========================================
+   レイアウト
+   ======================================== */
+
+/* メインコンテナ：最大幅を設定してスマホ・PCどちらでも見やすく */
+.container {
+  max-width: 480px;
+  margin: 0 auto; /* 中央揃え */
+}
+
+/* アプリタイトル */
+.app-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #4a90d9;
+  text-align: center;
+  padding: 24px 0 20px;
+  letter-spacing: 4px;
+}
+
+/* ========================================
+   入力エリア
+   ======================================== */
+
+.input-area {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+/* テキスト入力欄 */
+.todo-input {
+  flex: 1; /* 残りのスペースをすべて使う */
+  padding: 14px 16px;
+  font-size: 1rem;
+  border: 2px solid #d0dbe8;
+  border-radius: 12px;
+  outline: none; /* デフォルトのフォーカス枠を消す */
+  background: #fff;
+  transition: border-color 0.2s;
+}
+
+/* 入力欄にフォーカスしたとき */
+.todo-input:focus {
+  border-color: #4a90d9;
+}
+
+/* 追加ボタン */
+.add-btn {
+  padding: 14px 20px;
+  background-color: #4a90d9;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer; /* マウスカーソルをポインターにする */
+  white-space: nowrap;
+  transition: background-color 0.2s, transform 0.1s;
+  /* スマホでタップしやすい最小サイズを確保 */
+  min-width: 72px;
+}
+
+.add-btn:active {
+  background-color: #3178c6;
+  transform: scale(0.97);
+}
+
+/* ========================================
+   フィルターボタン
+   ======================================== */
+
+.filter-area {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.filter-btn {
+  flex: 1;
+  padding: 10px 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #6b8bb0;
+  background: #fff;
+  border: 2px solid #d0dbe8;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+/* 選択中のフィルターボタン */
+.filter-btn.active {
+  background-color: #4a90d9;
+  border-color: #4a90d9;
+  color: #fff;
+}
+
+/* ========================================
+   TODOリスト
+   ======================================== */
+
+/* リスト全体 */
+.todo-list {
+  list-style: none; /* デフォルトの箇条書き記号を消す */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* 各TODOアイテム */
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #fff;
+  padding: 14px 16px;
+  border-radius: 14px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  transition: opacity 0.2s;
+  /* スワイプ操作のための設定 */
+  touch-action: manipulation;
+}
+
+/* 完了済みアイテム */
+.todo-item.done {
+  opacity: 0.55;
+}
+
+/* チェックボックス（カスタムデザイン） */
+.todo-checkbox {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid #c0cfe0;
+  background: #fff;
+  cursor: pointer;
+  flex-shrink: 0; /* チェックボックスのサイズが縮まないようにする */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+/* チェック済みのチェックボックス */
+.todo-checkbox.checked {
+  background-color: #4a90d9;
+  border-color: #4a90d9;
+}
+
+/* チェックマーク（SVGアイコン） */
+.todo-checkbox.checked::after {
+  content: '';
+  display: block;
+  width: 8px;
+  height: 13px;
+  border: 2.5px solid #fff;
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg) translate(-1px, -2px);
+}
+
+/* TODOのテキスト */
+.todo-text {
+  flex: 1; /* 残りのスペースをすべて使う */
+  font-size: 1rem;
+  line-height: 1.4;
+  word-break: break-all; /* 長い文字列でも折り返す */
+}
+
+/* 完了済みテキストに打ち消し線 */
+.todo-item.done .todo-text {
+  text-decoration: line-through;
+  color: #999;
+}
+
+/* 削除ボタン */
+.delete-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: none;
+  background: #fee2e2;
+  color: #e53e3e;
+  font-size: 1.1rem;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.delete-btn:active {
+  background-color: #fca5a5;
+}
+
+/* ========================================
+   フッター（タスク数・クリアボタン）
+   ======================================== */
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+  padding: 0 4px;
+}
+
+/* タスク件数テキスト */
+#task-count {
+  font-size: 0.875rem;
+  color: #8a9ab0;
+}
+
+/* 完了済みクリアボタン */
+.clear-btn {
+  font-size: 0.875rem;
+  color: #e53e3e;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px 4px;
+  text-decoration: underline;
+}
+
+/* ========================================
+   空リスト表示
+   ======================================== */
+
+.empty-message {
+  text-align: center;
+  color: #b0bec5;
+  font-size: 0.95rem;
+  padding: 40px 0;
+}
