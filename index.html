@@ -5,6 +5,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TODOアプリ</title>
+
+  <!-- PWA: ホーム画面追加・テーマカラーの設定 -->
+  <meta name="theme-color" content="#4a90d9" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="TODO" />
+
+  <!-- PWA: マニフェストファイルの読み込み -->
+  <link rel="manifest" href="manifest.json" />
+
   <!-- スタイルシートの読み込み -->
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -44,5 +55,21 @@
 
   <!-- JavaScriptの読み込み（bodyの最後に置くことでHTMLが先に読み込まれる） -->
   <script src="app.js"></script>
+
+  <!-- PWA: Service Workerの登録 -->
+  <script>
+    // Service WorkerはHTTPS または localhost でのみ動作します
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('./sw.js')
+          .then(function(registration) {
+            console.log('[SW] 登録成功:', registration.scope);
+          })
+          .catch(function(error) {
+            console.log('[SW] 登録失敗:', error);
+          });
+      });
+    }
+  </script>
 </body>
 </html>
