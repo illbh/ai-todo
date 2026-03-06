@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <!-- maskableアイコンは全面を背景色で塗る（セーフゾーンは中央80%） -->
+  <rect width="512" height="512" fill="#4a90d9"/>
+  <!-- チェックマーク（セーフゾーン内に収める） -->
+  <polyline
+    points="140,265 220,348 372,168"
+    fill="none"
+    stroke="#ffffff"
+    stroke-width="46"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>

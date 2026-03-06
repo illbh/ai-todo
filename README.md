@@ -1,1 +1,1 @@
-﻿# AI TODO app
+# AI TODO app
