@@ -14,9 +14,9 @@ const FILES_TO_CACHE = [
   '/ai-todo/style.css',
   '/ai-todo/app.js',
   '/ai-todo/manifest.json',
-  '/ai-todo/icons/icon-192.svg',
-  '/ai-todo/icons/icon-512.svg',
-  '/ai-todo/icons/icon-maskable.svg',
+  '/ai-todo/icons/icon-192.png',
+  '/ai-todo/icons/icon-512.png',
+  '/ai-todo/icons/icon-maskable.png',
 ];
 
 // --------------------------------------------------
